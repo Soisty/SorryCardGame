@@ -232,33 +232,51 @@ class CompPlayer(Player):
 		for card in self.hand:
 			cardvalues.append(card.getValue())
 		for i, v in enumerate(setvalues):
-			for card in self.hand:
-				if v + card.getValue() == 15:
+			for j,card in enumerate(self.hand):
+				this_card_value = card.getValue()
+				if v + this_card_value == 15:
 					return card , None, i
-				elif v + card.getValue() == 15 and i == 4:
+				if v + this_card_value == 15 and i == 4:
 					return card , True, i
-				elif 99 in cardvalues:
-					for j,card in enumerate(self.hand):
-						if card.getValue() == 99:
-							return None, card, None
-				elif v + card.getValue() + card.getValue() == 15:
+				if card.getValue() == 99:
+					return None, card, None
+				if v + this_card_value + card.getValue() == 15:
 					return card, None, i
-				elif v + card.getValue() + card.getValue() == 15 and i == 4:
+				if v + card.getValue() + card.getValue() == 15 and i == 4:
 					return card, True, i
-				elif 0 in cardvalues:
-					for k,card in enumerate(self.hand):
-						if card.getValue() == 0:
-							return card, None, i
-				elif 11 in cardvalues:
-					for l,card.getValue() == 11:
-						if card.getValue() + v <= 15:
-							return card, None, i
-				if card.getValue() == 3
-					self.stealCardFromHand
-				if card.getValue() == 7
-					self.stealCardFromSet()
-				if card.getValue() == 11
-					self.tradeHands()
+				if this_card_value == 0:
+						return card, None, i
+				if this_card_value == 2:
+					if card.getValue() + v <= 15:
+						return card, None, i
+				if this_card_value == 7:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 3:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 11:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 12:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value in [-1, 10]:
+					card.setValue(10)
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 8:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 5:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 1:
+					if this_card_value + v <= 15:
+						return card, None, i
+				if this_card_value == 4:
+					if this_card_value + v <= 15:
+						return card, None, i
 
 
 class SorryGame(object):
