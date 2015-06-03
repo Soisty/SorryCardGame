@@ -197,11 +197,31 @@ class CompPlayer(Player):
 		for i, v in enumerate(setvalues):
 			for card in self.hand
 				if v + card.getValue() == 15:
-					return i
-				elif 99 in cadvalues:
+					return card , None, i
+				elif v + card.getValue() == 15 and i == 4:
+					return card , True, i
+				elif 99 in cardvalues:
 					for j,card in enumerate(self.hand):
 						if card.getValue() == 99:
-							return i
+							return None, card, None
+				elif v + card.getValue() + card.getValue() == 15:
+					return card, None, i
+				elif v + card.getValue() + card.getValue() == 15 and i == 4:
+					return card, True, i
+				elif 0 in cardvalues:
+					for k,card in enumerate(self.hand):
+						if card.getValue() == 0:
+							return card, None, i
+				elif 11 in cardvalues:
+					for l,card.getValue() == 11:
+						if card.getValue() + v <= 15:
+							return card, None, i
+				if card.getValue() == 3
+					self.stealCardFromHand
+				if card.getValue() == 7
+					self.stealCardFromSet()
+				if card.getValue() == 11
+					self.tradeHands()
 
 class SorryGame(object):
 	def __init__(self):
